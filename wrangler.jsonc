@@ -1,0 +1,18 @@
+// Cloudflare Worker serving Hardik Sharma Growth Syndicate as static assets. Pushing to main deploys (Workers Builds).
+{
+  "name": "money",
+  "compatibility_date": "2026-10-15",
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "routes": [
+    {
+      "pattern": "money.agenticrabbit.com",
+      "custom_domain": true
+    }
+  ]
+}
