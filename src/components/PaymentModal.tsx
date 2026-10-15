@@ -39,12 +39,14 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
 
   const finalAmount = tier ? tier.amount : customAmount || 500;
   const inrAmount = Math.round(finalAmount * 86.5);
-  const upiId = 'hardiksharma@upi';
+  const upiId = 'hardikksharmaaa-1@okicici';
   const cryptoAddresses: Record<string, string> = {
     USDC: '7XqP...hardik...88SolanaBase',
     SOL: 'HS99HardikGrowthFundSolanaX8',
     ETH: '0xHardikSharmaGrowthFund9999aC',
   };
+
+  const [isQrZoomed, setIsQrZoomed] = useState(false);
 
   const handleCopy = (text: string, type: 'upi' | 'crypto') => {
     navigator.clipboard.writeText(text);
@@ -183,43 +185,41 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
           {/* Rail Specific Details */}
           <div className="p-5 rounded-2xl bg-white/[0.02] border border-white/[0.08] mb-6">
             {selectedMethod === 'upi' && (
-              <div className="flex flex-col sm:flex-row items-center gap-5">
-                {/* Visual QR Code Display */}
-                <div className="w-32 h-32 rounded-xl bg-white p-2.5 flex flex-col items-center justify-center shadow-lg">
-                  {/* High visual quality SVG QR Representation */}
-                  <svg viewBox="0 0 100 100" className="w-full h-full text-black">
-                    <rect width="100" height="100" fill="white" />
-                    <rect x="10" y="10" width="30" height="30" rx="4" fill="black" />
-                    <rect x="16" y="16" width="18" height="18" rx="2" fill="white" />
-                    <rect x="20" y="20" width="10" height="10" fill="black" />
-
-                    <rect x="60" y="10" width="30" height="30" rx="4" fill="black" />
-                    <rect x="66" y="16" width="18" height="18" rx="2" fill="white" />
-                    <rect x="70" y="20" width="10" height="10" fill="black" />
-
-                    <rect x="10" y="60" width="30" height="30" rx="4" fill="black" />
-                    <rect x="16" y="66" width="18" height="18" rx="2" fill="white" />
-                    <rect x="20" y="70" width="10" height="10" fill="black" />
-
-                    {/* QR Data Dots */}
-                    <rect x="46" y="15" width="8" height="8" fill="black" />
-                    <rect x="46" y="30" width="8" height="8" fill="black" />
-                    <rect x="58" y="46" width="8" height="8" fill="black" />
-                    <rect x="70" y="46" width="8" height="8" fill="black" />
-                    <rect x="46" y="60" width="8" height="8" fill="black" />
-                    <rect x="60" y="60" width="12" height="12" fill="black" />
-                    <rect x="75" y="75" width="15" height="15" fill="black" />
-                  </svg>
+              <div className="flex flex-col sm:flex-row items-center gap-6">
+                {/* Visual QR Code Display from GooglePay_QR.PNG */}
+                <div className="relative group/qr flex-shrink-0 cursor-pointer" onClick={() => setIsQrZoomed(true)}>
+                  <div className="w-36 sm:w-44 rounded-2xl bg-white p-2.5 flex flex-col items-center justify-center shadow-2xl ring-1 ring-white/30 transition-transform duration-300 group-hover/qr:scale-105">
+                    <img
+                      src="/GooglePay_QR.png"
+                      alt="Google Pay UPI QR Code - Hardik Sharma"
+                      className="w-full h-auto rounded-xl object-contain"
+                    />
+                  </div>
+                  <div className="text-[10px] text-center font-mono text-neutral-400 mt-2 flex items-center justify-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Click to Enlarge</span>
+                  </div>
                 </div>
 
                 <div className="flex-1 text-center sm:text-left">
-                  <div className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold mb-1">
-                    Scan via Any UPI App
+                  <div className="flex items-center justify-center sm:justify-start gap-2 mb-1.5">
+                    <span className="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">
+                      Google Pay / UPI
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                      <IconCheck size={10} /> Verified
+                    </span>
                   </div>
+
+                  <h4 className="font-heading font-bold text-white text-base mb-1">
+                    Hardik Sharma
+                  </h4>
+
                   <p className="text-xs text-neutral-300 font-light mb-3">
-                    Google Pay, PhonePe, Paytm, CRED, or BHIM.
+                    Scan using Google Pay, PhonePe, Paytm, CRED, or any UPI app.
                   </p>
-                  <div className="flex items-center justify-center sm:justify-start gap-2">
+
+                  <div className="flex items-center justify-center sm:justify-start gap-2 mb-3">
                     <code className="text-xs font-mono bg-white/[0.05] border border-white/10 px-3 py-1.5 rounded-lg text-white">
                       {upiId}
                     </code>
@@ -230,6 +230,18 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                     >
                       {copiedUpi ? <IconCheck size={14} className="text-emerald-400" /> : <IconCopy size={14} />}
                     </button>
+                  </div>
+
+                  {/* Direct Mobile UPI Deep Link */}
+                  <div className="flex justify-center sm:justify-start">
+                    <a
+                      href={`upi://pay?pa=${upiId}&pn=Hardik%20Sharma&am=${inrAmount}&cu=INR&tn=Hardik%20Sharma%20Growth%20Fund`}
+                      onClick={playTactileClick}
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 text-obsidian-950 font-semibold text-xs hover:bg-amber-300 transition-colors shadow-[0_0_15px_rgba(245,158,11,0.3)] active:scale-95"
+                    >
+                      <span>Pay directly via UPI App</span>
+                      <IconArrowUpRight size={13} className="text-obsidian-950" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -317,6 +329,37 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Lightbox Zoom for GooglePay QR */}
+      {isQrZoomed && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-3xl cursor-zoom-out"
+          onClick={() => {
+            playTactileClick();
+            setIsQrZoomed(false);
+          }}
+        >
+          <div className="relative max-w-sm w-full bg-white p-4 rounded-3xl shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <button
+              onClick={() => setIsQrZoomed(false)}
+              className="absolute -top-12 right-0 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+            >
+              <IconCross size={16} />
+            </button>
+            <img
+              src="/GooglePay_QR.png"
+              alt="Google Pay UPI QR Code - Hardik Sharma"
+              className="w-full h-auto rounded-2xl object-contain"
+            />
+            <div className="text-center mt-3 text-black font-mono text-xs font-semibold">
+              Scan with GPay / PhonePe / Paytm
+            </div>
+            <div className="text-center text-neutral-500 font-mono text-[11px]">
+              hardikksharmaaa-1@okicici
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
