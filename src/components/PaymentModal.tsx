@@ -34,6 +34,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
   const [copiedCrypto, setCopiedCrypto] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [cryptoCurrency, setCryptoCurrency] = useState<'USDC' | 'SOL' | 'ETH'>('USDC');
+  const [isQrZoomed, setIsQrZoomed] = useState(false);
 
   if (!isOpen) return null;
 
@@ -45,8 +46,6 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
     SOL: 'HS99HardikGrowthFundSolanaX8',
     ETH: '0xHardikSharmaGrowthFund9999aC',
   };
-
-  const [isQrZoomed, setIsQrZoomed] = useState(false);
 
   const handleCopy = (text: string, type: 'upi' | 'crypto') => {
     navigator.clipboard.writeText(text);
