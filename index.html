@@ -1,54 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth selection:bg-amber-400/20 selection:text-amber-200">
+<html lang="en" class="dark scroll-smooth selection:bg-red-600 selection:text-white">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050508'/%3E%3Cpath d='M10 8h4v6.5h4V8h4v16h-4v-6.5h-4V24h-4V8z' fill='%23f59e0b'/%3E%3C/svg%3E" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Cpath d='M8 8h5v7h6V8h5v16h-5v-7h-6v7H8V8z' fill='%23FF2A2A'/%3E%3C/svg%3E" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>HARDIK SHARMA — The Human Growth Fund | Allocate Capital</title>
-    <meta name="description" content="An asymmetric venture syndicate backing the compounding cognitive throughput, technical execution, and velocity of Hardik Sharma. Paying is non-negotiable." />
+    <title>HARDIK SHARMA // INDUSTRIAL GROWTH PROTOCOL</title>
+    <meta name="description" content="Industrial Brutalist Capital Allocation Interface for Hardik Sharma. Zero friction. Pure kinetic runway." />
     
-    <!-- Premium Fonts: Plus Jakarta Sans, Syne, Instrument Serif, JetBrains Mono -->
+    <!-- Fonts: Archivo Black, JetBrains Mono, Space Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500;600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Clash Display & Cabinet Grotesk from Fontshare -->
-    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=cabinet-grotesk@500,700,800,900&display=swap" rel="stylesheet">
+    <!-- Cabinet Grotesk for architectural structural text -->
+    <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@800,900&display=swap" rel="stylesheet">
     
     <style>
-      /* Absolute zero anti-flicker and smooth typography */
-      html, body {
-        background-color: #030305;
-        color: #f3f4f6;
-        font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        overflow-x: hidden;
+      /* CRT scanline simulation */
+      .scanlines {
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.3) 2px,
+          rgba(0, 0, 0, 0.3) 4px
+        );
       }
 
-      /* Noise Overlay using SVG Data URI */
-      .bg-noise {
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
-      }
-
-      /* Custom scrollbar */
+      /* Mechanical scrollbar */
       ::-webkit-scrollbar {
-        width: 6px;
+        width: 4px;
+        height: 4px;
       }
       ::-webkit-scrollbar-track {
-        background: #030305;
+        background: #0A0A0A;
       }
       ::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: 9999px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 255, 255, 0.25);
+        background: #FF2A2A;
       }
     </style>
   </head>
-  <body class="bg-obsidian-950 text-neutral-200 antialiased relative min-h-[100dvh]">
+  <body class="bg-[#0A0A0A] text-[#EAEAEA] antialiased min-h-[100dvh] font-mono selection:bg-[#FF2A2A] selection:text-black">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
